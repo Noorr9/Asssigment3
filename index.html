@@ -2,9 +2,9 @@
 <html lang="en"> 
 <head>
     <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Make the page responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>UOB Students Nationality Data</title> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> <!-- Add some nice styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"> 
 </head>
 <body>
     <main class="container">
@@ -19,11 +19,11 @@
                     <th>Number of Students</th>
                 </tr>
             </thead>
-            <tbody id="table-body"> <!-- adding id to access this element in api.js -->
+            <tbody id="table-body">
             </tbody>
         </table>
     </main>
-    <script src="api.js"></script> <!-- Links the api.js to handle the data -->
+    <script src="api.js"></script> 
 </body>
 </html>
 
@@ -39,17 +39,15 @@ async function getStudentData() {
 
         // Check if the response is valid
         if (!apiResponse.ok || apiResponse.status !== 200) {
-            console.error('Failed to fetch data'); // Log an error message if the fetch fails
-            return; // Exit the function if there's an issue
+            console.error('Failed to fetch data'); 
+            return; 
         }
 
-        // Convert the response to JSON format
         const responseData = await apiResponse.json();
 
-        // Pass the results to the function that displays data
         renderStudentTable(responseData.results);
     } catch (fetchError) {
-        // Log any errors that occur during the fetching process
+       
         console.error('Error while fetching data', fetchError);
     }
 }
@@ -81,5 +79,4 @@ function renderStudentTable(records) {
     });
 }
 
-// Ensure the data fetching starts when the page is fully loaded
 document.addEventListener('DOMContentLoaded', getStudentData); </script>
